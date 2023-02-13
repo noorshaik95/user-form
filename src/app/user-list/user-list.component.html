@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" class="mat-toolbar mat-primary mat-toolbar-single-row">
+    <span>My Application</span>
+    <span class="spacer"></span>
+    <mat-icon aria-hidden="false" aria-label="Add User" (click)="openDialog('Add', -1)">add</mat-icon>
+</mat-toolbar>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>Age</th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="license">
+    <th mat-header-cell *matHeaderCellDef> License </th>
+    <td mat-cell *matCellDef="let element"> {{element.licenseNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+            <button mat-raised-button style="margin-right: 10px;" color="warn" (click)="onDelete(i)">Delete</button>
+            <button mat-raised-button color="accent" (click)="openDialog('Edit',i)">Edit</button>
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
